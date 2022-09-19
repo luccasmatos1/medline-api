@@ -48,6 +48,7 @@ public class UsuariosController {
 
 	}
 
+
 	@GetMapping("/{userId}")
 	public ResponseEntity<Users> buscarUsuario(@PathVariable Long userId) {
 		Optional<Users> user = usersRepository.findById(userId);

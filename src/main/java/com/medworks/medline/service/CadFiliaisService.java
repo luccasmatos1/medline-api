@@ -23,6 +23,6 @@ public class CadFiliaisService {
 	}
 	
 	public void excluir(Integer filialId) {
-		filiaisRepository.findById(filialId);
+		filiaisRepository.deleteById(filialId);
 	}
 }

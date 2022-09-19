@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.Range;
+
 @Entity
 public class Filiais {
 
@@ -16,9 +18,9 @@ public class Filiais {
 	private Integer idFilial;
 	
 	@Column(name = "CNPJ_CPF")
-	private String cpfCnpj;
-	private String Longitude;
-	private String Latitude;
+	private Integer cpfCnpj;
+	private String longitude;
+	private String latitude;
 	private String numero;
 	private String complemento;
 	private Double txServico;
@@ -31,13 +33,13 @@ public class Filiais {
 		
 	}
 	
-	public Filiais(Integer idFilial, String cpfCnpj, String longitude, String latitude, String numero,
+	public Filiais(Integer idFilial, Integer cpfCnpj, String longitude, String latitude, String numero,
 			String complemento, Double txServico, Double txGerenciamento, Integer tipo) {
 		super();
 		this.idFilial = idFilial;
 		this.cpfCnpj = cpfCnpj;
-		Longitude = longitude;
-		Latitude = latitude;
+		this.longitude = longitude;
+		this.latitude = latitude;
 		this.numero = numero;
 		this.complemento = complemento;
 		this.txServico = txServico;
@@ -50,23 +52,23 @@ public class Filiais {
 	public void setIdFilial(Integer idFilial) {
 		this.idFilial = idFilial;
 	}
-	public String getCpfCnpj() {
+	public Integer getCpfCnpj() {
 		return cpfCnpj;
 	}
-	public void setCpfCnpj(String cpfCnpj) {
+	public void setCpfCnpj(Integer cpfCnpj) {
 		this.cpfCnpj = cpfCnpj;
 	}
 	public String getLongitude() {
-		return Longitude;
+		return longitude;
 	}
 	public void setLongitude(String longitude) {
-		Longitude = longitude;
+		this.longitude = longitude;
 	}
 	public String getLatitude() {
-		return Latitude;
+		return latitude;
 	}
 	public void setLatitude(String latitude) {
-		Latitude = latitude;
+		this.latitude = latitude;
 	}
 	public String getNumero() {
 		return numero;
