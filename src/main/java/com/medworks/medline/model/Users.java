@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -21,19 +22,21 @@ public class Users {
 	private Long id;
 	
 	@NotBlank
-	@Size(max = 80)
+	
 	private String nome;
 	
 	@NotBlank
 	@Email
-	@Size(max = 80)
 	private String email;
+
 	@NotBlank
-	@Size(max = 16)
 	private String celular;
+
 	@NotBlank
 	private String senha;
 	
+	
+	@NotNull
 	private Integer status;
 	
 	

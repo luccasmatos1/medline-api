@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.medworks.medline.domain.repository.UsersRepository;
 import com.medworks.medline.model.Users;
+import com.medworks.medline.service.CadUserService;
 
 import java.util.Optional;
 
@@ -29,7 +31,10 @@ public class UsuariosController {
 
 	@PersistenceContext
 	private EntityManager manager;
-
+	
+	@Autowired
+	private CadUserService cadUserService;
+	@Autowired
 	private UsersRepository usersRepository;
 
 	public UsuariosController(UsersRepository usersRepository) {
@@ -58,17 +63,19 @@ public class UsuariosController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Users adicionar(@Valid @RequestBody Users user) {
-		return usersRepository.save(user);
+		return cadUserService.salvar(user);
 	}
 	
 	@PutMapping("/{userId}")
-	public ResponseEntity<Users> update(@PathVariable Long userId ,@Valid @RequestBody Users user){
+	public ResponseEntity<Users> update(@Valid @PathVariable Long userId , @RequestBody Users user){
 		if(!usersRepository.existsById(userId)) {
 			return ResponseEntity.notFound().build();
 		}
 		
 		user.setId(userId);
-		user = usersRepository.save(user);
+		cadUserService.salvar(user);
+		
+		
 		return ResponseEntity.ok(user);
 	}
 	
@@ -78,7 +85,7 @@ public class UsuariosController {
 			return ResponseEntity.notFound().build();
 		}
 		
-		usersRepository.deleteById(userId);
+		cadUserService.excluir(userId);
 		
 		return ResponseEntity.noContent().build();
 	}

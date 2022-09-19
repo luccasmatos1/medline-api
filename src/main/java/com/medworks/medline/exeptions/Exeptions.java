@@ -1,4 +1,4 @@
-package com.medworks.medline.exeptions;
+/*package com.medworks.medline.exeptions;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -8,4 +8,4 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class Exeptions extends ResponseEntityExceptionHandler {
 
-}
+}*/
